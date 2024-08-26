@@ -8,6 +8,8 @@ import org.testng.annotations.*;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import org.openqa.selenium.chrome.ChromeOptions;
+
 public class BaseTest {
 	
 	public WebDriver driver;
@@ -16,7 +18,9 @@ public class BaseTest {
 	public void f() {
 		
     	WebDriverManager.chromedriver().driverVersion("127.0.6533.120").setup();
-		driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-headless");
+        driver = new ChromeDriver(options);
 	}
 
 	@AfterTest
